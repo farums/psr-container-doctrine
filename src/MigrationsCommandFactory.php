@@ -17,7 +17,6 @@ class MigrationsCommandFactory
     {
         /** @var DependencyFactory $factory */
         $factory = $container->get(DependencyFactory::class);
-
         return new MigrateCommand($factory);
     }
 }

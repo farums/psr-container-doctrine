@@ -23,7 +23,7 @@ class MigrationsConfigurationFactory extends AbstractFactory
     protected function createWithConfig(ContainerInterface $container, string $configKey)
     {
         $migrationsConfig = $container->get($container, $configKey, 'migrations');
-
+        dump($migrationsConfig);
         $entityManager = $container->get(EntityManagerInterface::class);
 
         $configuration = new Configuration();

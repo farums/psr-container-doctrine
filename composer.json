@@ -1,7 +1,7 @@
 {
     "name": "farums/psr-container-doctrine",
     "type": "library",
-    "version": "0.1.0",
+    "version": "1.1.0",
     "description": "Doctrine Factories for PSR-11 Containers",
     "homepage": "https://github.com/farums/psr-container-doctrine",
     "license": "BSD-2-Clause",
