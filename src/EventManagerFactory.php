@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Roave\PsrContainerDoctrine;
+namespace PsrContainerDoctrine;
 
 use Doctrine\Common\EventManager;
 use Doctrine\Common\EventSubscriber;
 use Psr\Container\ContainerInterface;
-use Roave\PsrContainerDoctrine\Exception\DomainException;
-use Roave\PsrContainerDoctrine\Exception\InvalidArgumentException;
+use PsrContainerDoctrine\Exception\DomainException;
+use PsrContainerDoctrine\Exception\InvalidArgumentException;
 use function class_exists;
 use function get_class;
 use function gettype;

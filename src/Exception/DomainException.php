@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Roave\PsrContainerDoctrine\Exception;
+namespace PsrContainerDoctrine\Exception;
 
 use Doctrine\Common\EventSubscriber;
 use function sprintf;

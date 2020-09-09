@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Roave\PsrContainerDoctrine;
+namespace PsrContainerDoctrine;
 
 use Psr\Container\ContainerInterface;
 use function array_key_exists;

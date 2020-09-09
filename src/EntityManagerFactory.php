@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Roave\PsrContainerDoctrine;
+namespace PsrContainerDoctrine;
 
 use Doctrine\ORM\EntityManager;
 use Psr\Container\ContainerInterface;

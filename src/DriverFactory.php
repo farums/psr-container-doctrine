@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Roave\PsrContainerDoctrine;
+namespace PsrContainerDoctrine;
 
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
@@ -12,7 +12,7 @@ use Doctrine\Persistence\Mapping\Driver\FileDriver;
 use Doctrine\Persistence\Mapping\Driver\MappingDriver;
 use Doctrine\Persistence\Mapping\Driver\MappingDriverChain;
 use Psr\Container\ContainerInterface;
-use Roave\PsrContainerDoctrine\Exception\OutOfBoundsException;
+use PsrContainerDoctrine\Exception\OutOfBoundsException;
 use function array_key_exists;
 use function is_array;
 use function is_subclass_of;

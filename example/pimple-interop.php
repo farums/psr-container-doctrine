@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Roave\PsrContainerDoctrine\EntityManagerFactory;
+use PsrContainerDoctrine\EntityManagerFactory;
 
 // Standard config keys
 $container = new PimpleInterop(null, [

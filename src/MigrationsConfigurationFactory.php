@@ -2,9 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Roave\PsrContainerDoctrine;
+namespace PsrContainerDoctrine;
 
 use Doctrine\Migrations\Configuration\Configuration;
+use Doctrine\Migrations\Configuration\EntityManager\ExistingEntityManager;
+use Doctrine\Migrations\Configuration\Migration\ExistingConfiguration;
+use Doctrine\Migrations\DependencyFactory;
+use Doctrine\Migrations\Metadata\Storage\TableMetadataStorageConfiguration;
+use Doctrine\ORM\EntityManagerInterface;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -13,42 +18,41 @@ use Psr\Container\ContainerInterface;
 class MigrationsConfigurationFactory extends AbstractFactory
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     protected function createWithConfig(ContainerInterface $container, string $configKey)
     {
-        $migrationsConfig = $this->retrieveConfig($container, $configKey, 'migrations');
+        $migrationsConfig = $container->get($container, $configKey, 'migrations');
 
-        $configuration = new Configuration(
-            $this->retrieveDependency(
-                $container,
-                $configKey,
-                'connection',
-                ConnectionFactory::class
-            )
+        $entityManager = $container->get(EntityManagerInterface::class);
+
+        $configuration = new Configuration();
+        $configuration->addMigrationsDirectory($migrationsConfig['namespace'], $migrationsConfig['directory']);
+        $configuration->setAllOrNothing(true);
+        $configuration->setCheckDatabasePlatform(false);
+
+        $storageConfiguration = new TableMetadataStorageConfiguration();
+        $storageConfiguration->setTableName($migrationsConfig['table']);
+
+        $configuration->setMetadataStorageConfiguration($storageConfiguration);
+
+        return DependencyFactory::fromEntityManager(
+            new ExistingConfiguration($configuration),
+            new ExistingEntityManager($entityManager)
         );
-
-        $configuration->setName($migrationsConfig['name']);
-        $configuration->setMigrationsDirectory($migrationsConfig['directory']);
-        $configuration->setMigrationsNamespace($migrationsConfig['namespace']);
-        $configuration->setMigrationsTableName($migrationsConfig['table']);
-        $configuration->registerMigrationsFromDirectory($migrationsConfig['directory']);
-        $configuration->setMigrationsColumnName($migrationsConfig['column']);
-
-        return $configuration;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
-    protected function getDefaultConfig(string $configKey) : array
+    protected function getDefaultConfig(string $configKey): array
     {
         return [
             'directory' => 'scripts/doctrine-orm-migrations',
-            'name'      => 'Doctrine Database Migrations',
-            'namespace' => 'My\Migrations',
-            'table'     => 'migrations',
-            'column'    => 'version',
+            'name' => 'Doctrine Database Migrations',
+            'namespace' => 'Elmut\Infrastructure\Doctrine\Migration',
+            'table' => 'migrations',
+            'column' => 'version',
         ];
     }
 }

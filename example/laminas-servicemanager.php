@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Laminas\ServiceManager\ServiceManager;
-use Roave\PsrContainerDoctrine\EntityManagerFactory;
+use PsrContainerDoctrine\EntityManagerFactory;
 
 // Standard config keys
 $container = new ServiceManager([

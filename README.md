@@ -1,22 +1,11 @@
 # psr-container-doctrine: Doctrine Factories for PSR-11 Containers
 
-[![Latest Stable Version](https://poser.pugx.org/roave/psr-container-doctrine/v/stable)](https://packagist.org/packages/roave/psr-container-doctrine)
-[![Total Downloads](https://poser.pugx.org/roave/psr-container-doctrine/downloads)](https://packagist.org/packages/roave/psr-container-doctrine)
-[![Build Status](https://api.travis-ci.org/roave/psr-container-doctrine.png?branch=master)](http://travis-ci.org/roave/psr-container-doctrine)
-[![Coverage Status](https://coveralls.io/repos/roave/psr-container-doctrine/badge.png?branch=master)](https://coveralls.io/r/roave/psr-container-doctrine)
-
-[Doctrine](https://github.com/doctrine) factories for [PSR-11 containers](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-11-container.md).
-
-This package provides a set of factories to be used with containers using the PSR-11 standard for an easy
-Doctrine integration in a project. This project was originally written by
-[@DASPRiD](https://github.com/DASPRiD/container-interop-doctrine) but maintenance has been taken over by Roave.
-
 ## Installation
 
 The easiest way to install this package is through composer:
 
 ```bash
-$ composer require roave/psr-container-doctrine
+$ composer require farums/psr-container-doctrine
 ```
 
 ## Configuration
@@ -27,7 +16,7 @@ In the general case where you are only using a single connection, it's enough to
 return [
     'dependencies' => [
         'factories' => [
-            'doctrine.entity_manager.orm_default' => \Roave\PsrContainerDoctrine\EntityManagerFactory::class,
+            'doctrine.entity_manager.orm_default' => \PsrContainerDoctrine\EntityManagerFactory::class,
         ],
     ],
 ];
@@ -40,7 +29,7 @@ variants of the factories:
 return [
     'dependencies' => [
         'factories' => [
-            'doctrine.entity_manager.orm_other' => [\Roave\PsrContainerDoctrine\EntityManagerFactory::class, 'orm_other'],
+            'doctrine.entity_manager.orm_other' => [\PsrContainerDoctrine\EntityManagerFactory::class, 'orm_other'],
         ],
     ],
 ];
@@ -60,12 +49,12 @@ one, it will automatically pull its dependencies from on-the-fly created factori
 registering factories in your container which you may not need at all. Of course, you can always register those
 factories when required. The following additional factories are available:
 
-- ```\Roave\PsrContainerDoctrine\CacheFactory``` (doctrine.cache.*)
-- ```\Roave\PsrContainerDoctrine\ConnectionFactory``` (doctrine.connection.*)
-- ```\Roave\PsrContainerDoctrine\ConfigurationFactory``` (doctrine.configuration.*)
-- ```\Roave\PsrContainerDoctrine\DriverFactory``` (doctrine.driver.*)
-- ```\Roave\PsrContainerDoctrine\EventManagerFactory``` (doctrine.event_manager.*)
-- ```\Roave\PsrContainerDoctrine\MigrationsConfigurationFactory``` (doctrine.migrations.*)
+- ```\PsrContainerDoctrine\CacheFactory``` (doctrine.cache.*)
+- ```\PsrContainerDoctrine\ConnectionFactory``` (doctrine.connection.*)
+- ```\PsrContainerDoctrine\ConfigurationFactory``` (doctrine.configuration.*)
+- ```\PsrContainerDoctrine\DriverFactory``` (doctrine.driver.*)
+- ```\PsrContainerDoctrine\EventManagerFactory``` (doctrine.event_manager.*)
+- ```\PsrContainerDoctrine\MigrationsConfigurationFactory``` (doctrine.migrations.*)
 
 Each of those factories supports the same static behavior as the entity manager factory. For container specific
 configurations, there are a few examples provided in the example directory:
@@ -90,7 +79,7 @@ For `ExecuteCommand` example:
 return [
     'dependencies' => [
         'factories' => [
-            \Doctrine\Migrations\Tools\Console\Command\ExecuteCommand::class => \Roave\PsrContainerDoctrine\MigrationsCommandFactory::class,
+            \Doctrine\Migrations\Tools\Console\Command\ExecuteCommand::class => \PsrContainerDoctrine\MigrationsCommandFactory::class,
         ],
     ],
 ];

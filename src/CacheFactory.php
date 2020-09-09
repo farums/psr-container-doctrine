@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Roave\PsrContainerDoctrine;
+namespace PsrContainerDoctrine;
 
 use Doctrine\Common\Cache\ApcuCache;
 use Doctrine\Common\Cache\ArrayCache;
@@ -17,7 +17,7 @@ use Doctrine\Common\Cache\RedisCache;
 use Doctrine\Common\Cache\WinCacheCache;
 use Doctrine\Common\Cache\ZendDataCache;
 use Psr\Container\ContainerInterface;
-use Roave\PsrContainerDoctrine\Exception\OutOfBoundsException;
+use PsrContainerDoctrine\Exception\OutOfBoundsException;
 use function array_key_exists;
 use function array_map;
 use function assert;

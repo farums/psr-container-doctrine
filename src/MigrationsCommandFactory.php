@@ -2,41 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Roave\PsrContainerDoctrine;
+namespace PsrContainerDoctrine;
 
-use Doctrine\Migrations\Tools\Console\Command\AbstractCommand;
+use Doctrine\Migrations\DependencyFactory;
+use Doctrine\Migrations\Tools\Console\Command\MigrateCommand;
 use Psr\Container\ContainerInterface;
-use function class_exists;
-use function sprintf;
 
 class MigrationsCommandFactory
 {
     /**
      * @throws Exception\DomainException
      */
-    public function __invoke(ContainerInterface $container, string $requestedName) : AbstractCommand
+    public function __invoke(ContainerInterface $container, string $requestedName): MigrateCommand
     {
-        $configuration = $container->get('doctrine.migrations');
+        /** @var DependencyFactory $factory */
+        $factory = $container->get(DependencyFactory::class);
 
-        if (! class_exists($requestedName)) {
-            throw new Exception\DomainException(sprintf(
-                'Requested class %s does not exist',
-                $requestedName
-            ));
-        }
-
-        $command = new $requestedName();
-
-        if (! $command instanceof AbstractCommand) {
-            throw new Exception\InvalidArgumentException(sprintf(
-                'Requested class %s must be of type %s',
-                $requestedName,
-                AbstractCommand::class
-            ));
-        }
-
-        $command->setMigrationConfiguration($configuration);
-
-        return $command;
+        return new MigrateCommand($factory);
     }
 }

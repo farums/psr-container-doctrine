@@ -1,45 +1,24 @@
 {
-    "name": "roave/psr-container-doctrine",
+    "name": "farums/psr-container-doctrine",
     "type": "library",
+    "version": "0.1.0",
     "description": "Doctrine Factories for PSR-11 Containers",
-    "homepage": "https://github.com/Roave/psr-container-doctrine",
-    "license" : "BSD-2-Clause",
-    "authors": [
-        {
-            "name":     "Ben Scholzen",
-            "homepage": "https://github.com/dasprid"
-        },
-        {
-            "name": "James Titcumb",
-            "email": "james@asgrim.com",
-            "homepage": "https://github.com/asgrim"
-        }
-    ],
+    "homepage": "https://github.com/farums/psr-container-doctrine",
+    "license": "BSD-2-Clause",
     "require": {
-        "php": ">=7.3.0,<7.5.0",
-        "doctrine/common": "^2.6",
-        "doctrine/dbal": "^2.5",
-        "doctrine/migrations": "^2.2",
-        "doctrine/orm": "^2.5",
+        "php": ">=7.4.0,<7.5.0",
+        "doctrine/common": "^2.13",
+        "doctrine/dbal": "^2.10",
+        "doctrine/migrations": "^3.0",
+        "doctrine/orm": "^2.7",
         "psr/container": "^1.0.0"
     },
     "require-dev": {
-        "doctrine/coding-standard": "^7.0",
-        "phpunit/phpunit": "^8.5",
-        "psalm/plugin-phpunit": "^0.9.0",
-        "vimeo/psalm": "^3.8"
+        "doctrine/coding-standard": "^7.0"
     },
     "autoload": {
         "psr-4": {
-            "Roave\\PsrContainerDoctrine\\": "src/"
-        },
-        "files": [
-            "bc-namespace-shim.php"
-        ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "RoaveTest\\PsrContainerDoctrine\\": "test/"
+            "PsrContainerDoctrine\\": "src/"
         }
     },
     "config": {

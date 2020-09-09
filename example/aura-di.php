@@ -6,7 +6,7 @@ use Aura\Di\Container;
 use Aura\Di\Injection\InjectionFactory;
 use Aura\Di\Resolver\Reflector;
 use Aura\Di\Resolver\Resolver;
-use Roave\PsrContainerDoctrine\EntityManagerFactory;
+use PsrContainerDoctrine\EntityManagerFactory;
 
 $container = new Container(new InjectionFactory(new Resolver(new Reflector())));
 
